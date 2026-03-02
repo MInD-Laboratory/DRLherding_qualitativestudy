@@ -1,5 +1,5 @@
 //Survival Analysis experiment 1
-
+//Load the Long format Perf Experiment1.dta file before running the rest of the code
 //Set up survivial analysis 
 stset TrialTime, failure(Success=1)
 
@@ -64,7 +64,7 @@ twoway (lfit TrialTime Congruence if AgentType == 1, lcolor(blue) lwidth(medium)
 
 
 // Experiment 2
-
+//Clear the data and load the Long format Perf Experiment2.dta file before running the rest of the code
 //Set up survivial analysis 
 stset TrialTime, failure(Success=1)
 

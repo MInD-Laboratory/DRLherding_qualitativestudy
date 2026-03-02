@@ -5,7 +5,7 @@ clear all
 set more off
 
 * Import your Exp2 CSV file
-import delimited "ratings_combined_exp2.csv", clear
+import delimited "data/ratings_combined_exp2.csv", clear
 
 pca q1 q2 q3 q4 q5
 
@@ -33,7 +33,7 @@ save "temp_pos.dta", replace
 *--------------------------------------------*
 * Step 2: Re-import data for strategy effect
 *--------------------------------------------*
-import delimited "ratings_combined_exp2.csv", clear
+import delimited "data/ratings_combined_exp2.csv", clear
 gen component = "Strategy Effect"
 gen score = q4
 keep part_id agent_type component score
