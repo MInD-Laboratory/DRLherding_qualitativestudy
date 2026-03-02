@@ -1,0 +1,732 @@
+Mono path[0] = '/home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Managed'
+Mono config path = '/home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/MonoBleedingEdge/etc'
+Preloaded 'lib_burst_generated.so'
+Preloaded 'libgrpc_csharp_ext.x64.so'
+Preloaded 'libopus_egpv.so'
+Initialize engine version: 2019.4.9f1 (50fe8a171dd9)
+[Subsystems] Discovering subsystems at path /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/UnitySubsystems
+Forcing GfxDevice: Null
+GfxDevice: creating device client; threaded=0
+NullGfxDevice:
+    Version:  NULL 1.0 [1.0]
+    Renderer: Null Device
+    Vendor:   Unity Technologies
+Begin MonoManager ReloadAssembly
+- Completed reload, in  0.189 seconds
+UnloadTime: 0.582360 ms
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libcoreclr.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libcoreclr.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libcoreclr.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libSystem.dylib
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libSystem.dylib.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libSystem.dylib
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libcoreclr.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libcoreclr.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libcoreclr.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libSystem.dylib
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libSystem.dylib.so
+Fallback handler could not load library /home/576/gp9465/UnityBuilds/TS/Shepherding_BB_Data/Mono/libSystem.dylib
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 0 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 1 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 2 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 3 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 4 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 5 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 6 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 7 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 8 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 9 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 10 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 11 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+stepping curruculum 12 
+(Filename: ./Runtime/Export/Debug/Debug.bindings.h Line: 35)
+
+Setting up 28 worker threads for Enlighten.
+  Thread -> id: 152c92f73700 -> priority: 1 
+  Thread -> id: 152c92d72700 -> priority: 1 
+  Thread -> id: 152c92b71700 -> priority: 1 
+  Thread -> id: 152c92970700 -> priority: 1 
+  Thread -> id: 152c9276f700 -> priority: 1 
+  Thread -> id: 152c9256e700 -> priority: 1 
+  Thread -> id: 152c9236d700 -> priority: 1 
+  Thread -> id: 152c9216c700 -> priority: 1 
+  Thread -> id: 152c91f6b700 -> priority: 1 
+  Thread -> id: 152c91d6a700 -> priority: 1 
+  Thread -> id: 152c91b69700 -> priority: 1 
+  Thread -> id: 152c91968700 -> priority: 1 
+  Thread -> id: 152c91767700 -> priority: 1 
+  Thread -> id: 152c91566700 -> priority: 1 
+  Thread -> id: 152c91365700 -> priority: 1 
+  Thread -> id: 152c91164700 -> priority: 1 
+  Thread -> id: 152c90f63700 -> priority: 1 
+  Thread -> id: 152c90d62700 -> priority: 1 
+  Thread -> id: 152c90b61700 -> priority: 1 
+  Thread -> id: 152c90960700 -> priority: 1 
+  Thread -> id: 152c9075f700 -> priority: 1 
+  Thread -> id: 152c9055e700 -> priority: 1 
+  Thread -> id: 152c9035d700 -> priority: 1 
+  Thread -> id: 152c3ffff700 -> priority: 1 
+  Thread -> id: 152c3fdfe700 -> priority: 1 
+  Thread -> id: 152c3fbfd700 -> priority: 1 
+  Thread -> id: 152c3f9fc700 -> priority: 1 
+  Thread -> id: 152c3f7fb700 -> priority: 1 

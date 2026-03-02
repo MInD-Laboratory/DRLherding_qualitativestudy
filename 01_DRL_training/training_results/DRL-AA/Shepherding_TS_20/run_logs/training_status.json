@@ -1,0 +1,63 @@
+{
+    "Herder_BB_ActionSelection1": {
+        "checkpoints": [
+            {
+                "steps": 3499974,
+                "file_path": "results/Shepherding_TS_20/Herder_BB_ActionSelection1/Herder_BB_ActionSelection1-3499974.onnx",
+                "reward": null,
+                "creation_time": 1679494692.3365633
+            },
+            {
+                "steps": 3999972,
+                "file_path": "results/Shepherding_TS_20/Herder_BB_ActionSelection1/Herder_BB_ActionSelection1-3999972.onnx",
+                "reward": -0.6268196105957031,
+                "creation_time": 1679495267.7703106
+            },
+            {
+                "steps": 4499998,
+                "file_path": "results/Shepherding_TS_20/Herder_BB_ActionSelection1/Herder_BB_ActionSelection1-4499998.onnx",
+                "reward": null,
+                "creation_time": 1679495846.6275027
+            },
+            {
+                "steps": 4999948,
+                "file_path": "results/Shepherding_TS_20/Herder_BB_ActionSelection1/Herder_BB_ActionSelection1-4999948.onnx",
+                "reward": -0.7763171494007111,
+                "creation_time": 1679496426.0699337
+            },
+            {
+                "steps": 5078052,
+                "file_path": "results/Shepherding_TS_20/Herder_BB_ActionSelection1/Herder_BB_ActionSelection1-5078052.onnx",
+                "reward": -0.758889463212755,
+                "creation_time": 1679496518.2026076
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5078052,
+            "file_path": "results/Shepherding_TS_20/Herder_BB_ActionSelection1.onnx",
+            "reward": -0.758889463212755,
+            "creation_time": 1679496518.2026076
+        }
+    },
+    "Herder_BB_Action1": {
+        "checkpoints": [
+            {
+                "steps": 0,
+                "file_path": "results/Shepherding_TS_20/Herder_BB_Action1/Herder_BB_Action1-0.onnx",
+                "reward": null,
+                "creation_time": 1679496518.3056362
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 0,
+            "file_path": "results/Shepherding_TS_20/Herder_BB_Action1.onnx",
+            "reward": null,
+            "creation_time": 1679496518.3056362
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.2.0",
+        "mlagents_version": "0.25.0",
+        "torch_version": "1.7.1"
+    }
+}
