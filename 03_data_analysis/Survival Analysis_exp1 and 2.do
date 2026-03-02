@@ -4,7 +4,7 @@
 stset TrialTime, failure(Success=1)
 
 graph set window fontface "Times New Roman" 
-sts graph, by(AgentType) ci failure title("") ylabel(0(0.2)1, angle(0)) ytitle("Success Probability") xlabel(0(10)100, labsize(small)) legend(order(7 "Heuristic_AA" 9 "DRL-HP-AA" 8 "DRL-AA" 1 "95% CI" 5 "95% CI" 3 "95% CI") cols(7) position(1)) graphregion(color(white)) xtitle("Trial Time (s)")
+sts graph, by(AgentType) ci failure title("") ylabel(0(0.2)1, angle(0)) ytitle("Success Probability") xlabel(0(10)100, labsize(small)) legend(order(7 "Heuristic-AA" 9 "DRL-HP-AA" 8 "DRL-AA" 1 "95% CI" 5 "95% CI" 3 "95% CI") cols(7) position(1)) graphregion(color(white)) xtitle("Trial Time (s)")
 // Determine which distribution is best for AFT
 
 // note Congruence1 is Congruence z-scored
