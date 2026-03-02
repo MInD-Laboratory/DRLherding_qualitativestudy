@@ -35,6 +35,34 @@ mlagents-learn Herders_BB.yaml --env Shepherding_BB.x86_64 --run-id Shepherding_
 
 ML-Agents documentation: https://github.com/Unity-Technologies/ml-agents
 
+## Plotting Training Logs
+
+Use the provided script to aggregate TensorBoard scalar logs across all runs and plot method-level curves (mean ± 95% CI).
+
+### Install dependencies
+
+```bash
+pip install tensorboard pandas matplotlib numpy
+```
+
+### Run the plotting script
+
+From the repository root:
+
+```bash
+python 03_data_analysis/plot_training_logs.py
+```
+
+Output figures are saved to:
+
+- `03_data_analysis/outputs/training_plots/`
+
+Optional: plot only selected tags (example)
+
+```bash
+python 03_data_analysis/plot_training_logs.py --tags "Environment/Cumulative Reward" "Losses/Policy Loss"
+```
+
 ## Running the Experiment Builds
 
 ### Requirements
