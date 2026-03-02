@@ -8,6 +8,12 @@ This repository contains supplementary materials for the DRL herding study:
 2. Human–AI experiment builds (Experiment 1 and Experiment 2)
 3. Stata scripts, datasets, and analysis outputs
 
+## Original Unity Codebase
+
+The original Unity repository adapted for this study is available at:
+
+- https://github.com/MultiagentDynamics/Human-Machine-Shepherding/
+
 ## DRL Training Builds and Results (ML-Agents)
 
 - The Unity builds used to train DRL agents with ML-Agents are stored in their respective methodology folders.
