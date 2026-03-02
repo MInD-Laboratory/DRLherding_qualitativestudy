@@ -14,6 +14,14 @@ The original Unity repository adapted for this study is available at:
 
 - https://github.com/MultiagentDynamics/Human-Machine-Shepherding/
 
+## Summary of AA Types Used in the Experiment
+
+| AA Type | Kinematic model (how to move) | Decision model (where to move) | Training data & regimen | Partner setup during training | Reward structure | Network / hyper-parameters |
+|---|---|---|---|---|---|---|
+| Heuristic-AA | DPMP task-dynamic equations for radial distance and angle; parameters set from prior shepherding models (e.g., radial/angle damping & stiffness; Rayleigh & van der Pol terms). | Rule-based heuristic: at each timestep select TA that (1) is closer to the AA than to the human HA, and (2) is farthest from the containment region. | No learning; policy adapted from prior work and executed over Unity shepherding environment. | N/A (deployed as fixed policy). | N/A (no RL rewards). | N/A (no neural network). |
+| DRL-AA | Same DPMP movement dynamics as above (constrains kinematics). | Deep RL (PPO) network outputs one-hot of TA to pursue. | Self-play in Unity shepherding; 11-step curriculum; observations sampled every 15th frame at 50 Hz; 9 parallel environments. | Trained without a partner model of humans (self-play only). | +0.01 per TA inside containment each frame; negative: 0.01 × distance of each TA outside center; -0.002 when both HAs < 5 cm apart. | MLP with 3 hidden layers × 64 units; 24 inputs (states of all TAs & HAs). PPO; top agent selected by lowest average trial time over 200 post-training trials; 20 seeds per method. |
+| DRL-HP-AA | Same DPMP movement dynamics as above (constrains kinematics). | Deep RL (PPO) network as above. | Trained alongside a heuristic DPMP partner using the same curriculum, sampling, and parallelism as DRL-AA. | Heuristic partner’s kinematic parameters randomized each episode within human-like ranges (damping 5–45; stiffness 7.5–12.73). | Same as DRL-AA. | Same network and PPO settings as DRL-AA. |
+
 ## DRL Training Builds and Results (ML-Agents)
 
 - The Unity builds used to train DRL agents with ML-Agents are stored in their respective methodology folders.
