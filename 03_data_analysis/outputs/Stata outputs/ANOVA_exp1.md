@@ -127,6 +127,29 @@ AgentType |  TrialT~e  TA_Tra~l  Congru~e  Human_~l
       -------------------+----------------------------------------------------
                    Total |  837663.26        851   984.32815  
 
+. margins AgentType, pwcompare(effects) mcompare(bonferroni)
+
+Pairwise comparisons of predictive margins                 Number of obs = 852
+
+Expression: Linear prediction, predict()
+
+---------------------------
+             |    Number of
+             |  comparisons
+-------------+-------------
+   AgentType |            3
+---------------------------
+
+-------------------------------------------------------------------------------
+              |            Delta-method    Bonferroni           Bonferroni
+              |   Contrast   std. err.      t    P>|t|     [95% conf. interval]
+--------------+----------------------------------------------------------------
+    AgentType |
+   RL vs DMP  |   35.82465   1.933189    18.53   0.000      31.1865     40.4628
+RL_HP vs DMP  |   30.29444   1.933189    15.67   0.000     25.65629    34.93259
+ RL_HP vs RL  |  -5.530211   1.933189    -2.86   0.013    -10.16836   -.8920599
+-------------------------------------------------------------------------------
+
 . pwmean TrialTime, over(AgentType) mcompare(bonferroni)
 
 Pairwise comparisons of means with equal variances

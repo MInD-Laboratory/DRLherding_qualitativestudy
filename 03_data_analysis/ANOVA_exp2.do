@@ -30,6 +30,7 @@ capture noisily tabulate AgentType, summarize(TrialTime)
 // -----------------------------------------------------------------------------
 
 anova TrialTime PartID AgentType TrialNum AgentType#TrialNum
+margins AgentType, pwcompare(effects) mcompare(bonferroni)
 pwmean TrialTime, over(AgentType) mcompare(bonferroni)
 
 anova Congruence PartID AgentType TrialNum AgentType#TrialNum
