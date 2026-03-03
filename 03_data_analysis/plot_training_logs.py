@@ -2,8 +2,8 @@
 from __future__ import annotations
 
 import argparse
-import math
 import re
+import time
 from collections import defaultdict
 from pathlib import Path
 
@@ -17,12 +17,19 @@ def discover_event_files(root: Path) -> list[Path]:
     return sorted(root.rglob("events.out.tfevents.*"))
 
 
-def extract_scalars(event_file: Path) -> dict[str, pd.DataFrame]:
-    accumulator = event_accumulator.EventAccumulator(str(event_file), size_guidance={"scalars": 0})
+def extract_scalars(
+    event_file: Path, selected_tags: set[str] | None = None, max_scalars_per_tag: int = 0
+) -> dict[str, pd.DataFrame]:
+    size_guidance = {"scalars": max_scalars_per_tag if max_scalars_per_tag > 0 else 0}
+    accumulator = event_accumulator.EventAccumulator(str(event_file), size_guidance=size_guidance)
     accumulator.Reload()
 
     tag_to_df: dict[str, pd.DataFrame] = {}
-    for tag in accumulator.Tags().get("scalars", []):
+    tags = accumulator.Tags().get("scalars", [])
+    if selected_tags is not None:
+        tags = [tag for tag in tags if tag in selected_tags]
+
+    for tag in tags:
         events = accumulator.Scalars(tag)
         if not events:
             continue
@@ -106,6 +113,18 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional list of scalar tags to plot. If omitted, plots all tags present in both methods.",
     )
+    parser.add_argument(
+        "--max-scalars-per-tag",
+        type=int,
+        default=20000,
+        help="Maximum scalar points to load per tag per event file (0 = load all).",
+    )
+    parser.add_argument(
+        "--progress-every",
+        type=int,
+        default=5,
+        help="Print parse progress every N event files per method.",
+    )
     return parser.parse_args()
 
 
@@ -121,6 +140,7 @@ def main() -> None:
 
     method_roots = build_default_roots(repo_root)
     method_tag_series: dict[str, dict[str, list[pd.DataFrame]]] = defaultdict(lambda: defaultdict(list))
+    selected_tags_set = set(args.tags) if args.tags else None
 
     for method_name, method_root in method_roots.items():
         if not method_root.exists():
@@ -133,16 +153,26 @@ def main() -> None:
             continue
 
         print(f"[INFO] {method_name}: found {len(event_files)} event files")
+        method_start = time.perf_counter()
 
-        for event_file in event_files:
+        for file_index, event_file in enumerate(event_files, start=1):
+            if file_index == 1 or file_index % max(1, args.progress_every) == 0 or file_index == len(event_files):
+                print(f"[INFO] {method_name}: parsing event file {file_index}/{len(event_files)}")
             try:
-                tag_to_df = extract_scalars(event_file)
+                tag_to_df = extract_scalars(
+                    event_file,
+                    selected_tags=selected_tags_set,
+                    max_scalars_per_tag=args.max_scalars_per_tag,
+                )
             except Exception as error:
                 print(f"[WARN] Could not parse {event_file}: {error}")
                 continue
 
             for tag, tag_df in tag_to_df.items():
                 method_tag_series[method_name][tag].append(tag_df)
+
+        elapsed_seconds = time.perf_counter() - method_start
+        print(f"[INFO] {method_name}: parsing complete in {elapsed_seconds:.1f}s")
 
     if not method_tag_series:
         print("[ERROR] No usable scalar data found.")

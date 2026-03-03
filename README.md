@@ -53,6 +53,8 @@ ML-Agents documentation: https://github.com/Unity-Technologies/ml-agents
 
 Use the provided script to aggregate TensorBoard scalar logs across all runs and plot method-level curves (mean ± 95% CI).
 
+> **Note on curriculum-step logging:** Due to a logging bug, curriculum steps were only recorded when a policy update occurred, while training termination still followed curriculum-step completion. As a result, some curriculum transitions may not appear in the logs. In `DRL-HP-AA`, the jump from curriculum step 9 to 11 could occur within a single policy-update interval and was therefore not recorded as a separate intermediate step.
+
 ### Install dependencies
 
 ```bash
