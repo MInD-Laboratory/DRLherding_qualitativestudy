@@ -41,10 +41,3 @@ pwcompare i.AgentType, small effects mcompare(bonf) // all p < .001
 
 margins i.AgentType // Presents marginal predicted means. This is represented as z-scores
 
-         Delta-method
-             |     Margin   std. err.      z    P>|z|     [95% conf. interval]
--------------+----------------------------------------------------------------
-   AgentType |
-        DMP  |   1.212647   .0315718    38.41   0.000     1.150767    1.274526
-         RL  |  -.8071564   .0329883   -24.47   0.000    -.8718122   -.7425006
-      RL_HP  |  -.3578347   .0315718   -11.33   0.000    -.4197143   -.2959551

@@ -1,4 +1,3 @@
-
 . // Mixed effects model for congrunce_ Experiment1
 . 
 . clear all
@@ -137,7 +136,7 @@ Note: LR test is conservative and provided only for reference.
 . estimates store m2
 
 . 
-. lrtest m1 m2 // chi2(2) = 6.91, p = .0315. 2-way model provides better fit.
+. lrtest m1 m2 // chi2(2) = 1.12, p = .5716. 1-way model is preferred.
 
 Likelihood-ratio test
 Assumption: m1 nested within m2
@@ -147,15 +146,15 @@ Prob > chi2 = 0.5716
 
 . 
 . // To adjust for small samples, refit model with REML with Kenward-Roger estimates of error dof
-. mixed Congruence1 i.AgentType c.TrialNum i.AgentType#c.TrialNum || PartID: i.AgentType, reml dfmethod(kroger)
+. mixed Congruence1 i.AgentType c.TrialNum || PartID: i.AgentType, reml dfmethod(kroger)
 
 Performing EM optimization ...
 
 Performing gradient-based optimization: 
-Iteration 0:  Log restricted-likelihood = -682.60559  
-Iteration 1:  Log restricted-likelihood = -679.10179  
-Iteration 2:  Log restricted-likelihood = -678.98651  
-Iteration 3:  Log restricted-likelihood = -678.98651  
+Iteration 0:  Log restricted-likelihood = -678.38182  
+Iteration 1:  Log restricted-likelihood = -674.88451  
+Iteration 2:  Log restricted-likelihood = -674.77106  
+Iteration 3:  Log restricted-likelihood = -674.77106  
 
 Computing standard errors ...
 
@@ -167,45 +166,40 @@ Group variable: PartID                               Number of groups =     71
                                                                   min =     12
                                                                   avg =   12.0
                                                                   max =     12
-DF method: Kenward–Roger                             DF:          min = 693.83
-                                                                  avg = 709.44
-                                                                  max = 736.12
-                                                     F(5, 440.38)     = 449.11
-Log restricted-likelihood = -678.98651               Prob > F         = 0.0000
+DF method: Kenward–Roger                             DF:          min = 202.01
+                                                                  avg = 449.27
+                                                                  max = 695.79
+                                                     F(3, 261.95)     = 748.41
+Log restricted-likelihood = -674.77106               Prob > F         = 0.0000
 
---------------------------------------------------------------------------------------
-         Congruence1 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
----------------------+----------------------------------------------------------------
-           AgentType |
-                 RL  |  -1.903945   .1452244   -13.11   0.000    -2.189049   -1.618842
-              RL_HP  |  -1.589011    .144914   -10.97   0.000    -1.873507   -1.304515
-                     |
-            TrialNum |   .0107104   .0278887     0.38   0.701     -.044046    .0654668
-                     |
-AgentType#c.TrialNum |
-                 RL  |  -.0331023   .0394406    -0.84   0.402    -.1105395     .044335
-              RL_HP  |   .0052941   .0394406     0.13   0.893    -.0721431    .0827313
-                     |
-               _cons |    1.17516   .1025932    11.45   0.000      .973736    1.376584
---------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+ Congruence1 | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   AgentType |
+         RL  |  -2.019803   .0450934   -44.79   0.000    -2.108717   -1.930889
+      RL_HP  |  -1.570481   .0440678   -35.64   0.000    -1.657348   -1.483615
+             |
+    TrialNum |    .001441   .0160913     0.09   0.929    -.0301523    .0330343
+       _cons |   1.207603   .0645652    18.70   0.000     1.080834    1.334372
+------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
 -----------------------------+------------------------------------------------
 PartID: Independent          |
-            var(2.AgentType) |   .0063948   .0138229      .0000924    .4423574
-            var(3.AgentType) |   6.31e-10   2.70e-09      1.41e-13    2.82e-06
-                  var(_cons) |   .0017977   .0054436      4.76e-06    .6795882
+            var(2.AgentType) |   .0064923   .0137433      .0001025    .4114058
+            var(3.AgentType) |   5.73e-10   3.17e-09      1.13e-14    .0000291
+                  var(_cons) |   .0018316   .0049632      9.04e-06    .3709883
 -----------------------------+------------------------------------------------
-               var(Residual) |   .2761121   .0157751      .2468617    .3088282
+               var(Residual) |   .2757598     .01523      .2474683    .3072856
 ------------------------------------------------------------------------------
-LR test vs. linear model: chi2(3) = 0.37                  Prob > chi2 = 0.9467
+LR test vs. linear model: chi2(3) = 0.38                  Prob > chi2 = 0.9441
 
 Note: LR test is conservative and provided only for reference.
 
 . 
 . // 1-way effects
-. contrast i.AgentType, small     // F(2, 893.19) = 203.44, p < .0001
+. contrast i.AgentType, small     // F(2, 158.43) = 1123.18, p < .0001
 
 Contrasts of marginal linear predictions
 
@@ -215,7 +209,7 @@ Margins: asbalanced
              |         df        ddf           F        P>F
 -------------+---------------------------------------------
 Congruence1  |
-   AgentType |          2     746.66       98.97     0.0000
+   AgentType |          2     158.43     1123.19     0.0000
 -----------------------------------------------------------
 
 . pwcompare i.AgentType, small effects mcompare(bonf) // all p < .001
@@ -238,9 +232,9 @@ Congruence1  |
 --------------+----------------------------------------------------------------
 Congruence1   |
     AgentType |
-   RL vs DMP  |  -1.903945   .1452244   -13.11   0.000    -2.252406   -1.555484
-RL_HP vs DMP  |  -1.589011    .144914   -10.97   0.000     -1.93673   -1.241291
- RL_HP vs RL  |   .3149344   .1452244     2.17   0.091    -.0334892     .663358
+   RL vs DMP  |  -2.019803   .0450934   -44.79   0.000    -2.128662   -1.910944
+RL_HP vs DMP  |  -1.570481   .0440678   -35.64   0.000    -1.676822   -1.464141
+ RL_HP vs RL  |   .4493217   .0450934     9.96   0.000     .3396487    .5589947
 -------------------------------------------------------------------------------
 
 . 
@@ -255,77 +249,7 @@ Expression: Linear prediction, fixed portion, predict()
              |     Margin   std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
    AgentType |
-        DMP  |   1.212647   .0315839    38.39   0.000     1.150743     1.27455
-         RL  |  -.8071564    .032979   -24.47   0.000     -.871794   -.7425188
-      RL_HP  |  -.3578347   .0315839   -11.33   0.000    -.4197381   -.2959313
+        DMP  |   1.212647   .0315719    38.41   0.000     1.150767    1.274526
+         RL  |  -.8071564   .0329882   -24.47   0.000    -.8718121   -.7425006
+      RL_HP  |  -.3578347   .0315719   -11.33   0.000    -.4197144    -.295955
 ------------------------------------------------------------------------------
-
-. 
-. // 2-way effect
-. contrast i.AgentType#c.TrialNum, small // F(2, 902.46) = 3.46, p = .0319
-
-Contrasts of marginal linear predictions
-
-Margins: asbalanced
-
--------------------------------------------------------------------
-                     |         df        ddf           F        P>F
----------------------+---------------------------------------------
-Congruence1          |
-AgentType#c.TrialNum |          2     693.83        0.56     0.5733
--------------------------------------------------------------------
-
-. 
-. pwcompare (c.TrialNum#AgentType), mcompare(bonf) small // to get error dof
-
-Pairwise comparisons of marginal linear predictions
-
-Margins: asbalanced
-
------------------------------------
-                     |    Number of
-                     |  comparisons
----------------------+-------------
-Congruence1          |
-AgentType#c.TrialNum |            3
------------------------------------
-
-------------------------------------------------------------------------------------
-                     |                                               Bonferroni
-                     |   Contrast   Std. err.           df      [95% conf. interval]
----------------------+--------------------------------------------------------------
-Congruence1          |
-AgentType#c.TrialNum |
-          RL vs DMP  |  -.0331023   .0394406         693.8     -.1277518    .0615473
-       RL_HP vs DMP  |   .0052941   .0394406         693.8     -.0893554    .0999436
-        RL_HP vs RL  |   .0383964   .0394406         693.8     -.0562532    .1330459
-------------------------------------------------------------------------------------
-
-. pwcompare (c.TrialNum#AgentType), effects mcompare(bonf) small
-
-Pairwise comparisons of marginal linear predictions
-
-Margins: asbalanced
-
------------------------------------
-                     |    Number of
-                     |  comparisons
----------------------+-------------
-Congruence1          |
-AgentType#c.TrialNum |            3
------------------------------------
-
---------------------------------------------------------------------------------------
-                     |                            Bonferroni           Bonferroni
-                     |   Contrast   Std. err.      t    P>|t|     [95% conf. interval]
----------------------+----------------------------------------------------------------
-Congruence1          |
-AgentType#c.TrialNum |
-          RL vs DMP  |  -.0331023   .0394406    -0.84   1.000    -.1277518    .0615473
-       RL_HP vs DMP  |   .0052941   .0394406     0.13   1.000    -.0893554    .0999436
-        RL_HP vs RL  |   .0383964   .0394406     0.97   0.992    -.0562532    .1330459
---------------------------------------------------------------------------------------
-
-. // RL has more negative slope compared to DMP condition (contrast = -0.0720501), t(902.5) = -2.59, p = .029. Other comparisons are p >= .278
-. 
-end of do-file
