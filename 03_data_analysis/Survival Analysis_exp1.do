@@ -73,5 +73,38 @@ predict xbhat, xb  // Get linear predictor (log scale)
 gen yhat = exp(xbhat)  // Convert back to original time scale
 twoway (lfit TrialTime Congruence if AgentType == 1, lcolor(blue) lwidth(medium)) (lfit TrialTime Congruence if AgentType == 2, lcolor(orange) lwidth(medium)) (lfit TrialTime Congruence if AgentType == 3, lcolor(green) lwidth(medium)) (scatter TrialTime Congruence if AgentType == 1, mcolor(blue) msize(small)) (scatter TrialTime Congruence if AgentType == 2, mcolor(orange) msize(small)) (scatter TrialTime Congruence if AgentType == 3, mcolor(green) msize(small)), legend(order(1 "Heuristic-AA" 3 "DRL-HP-AA" 2 "DRL-AA") cols(9) position(1)) xtitle("Congruence") ytitle("Trial Time (s)") title("") ylabel(0(20)120)
 
+// Check for multicollinearity and non-linearity
+gen ln_time = ln(_t)
+reg ln_time i.AgentType c.Congruence1##i.AgentType c.TrialNum
+estat vif
+
+// Original Model
+mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(lognormal) time tratio
+estimates store m1
+
+// Check if Quadratic Term improves model fit.
+mestreg i.AgentType c.Congruence1 c.Congruence1#c.Congruence1 ///
+    i.AgentType#c.Congruence1 i.AgentType#c.Congruence1#c.Congruence1 c.TrialNum ///
+    || PartID: i.AgentType, distribution(lognormal) time tratio
+estimates store m2
+
+lrtest m1 m2	// lr-test chi2(3) = 42.49, p < .0001
+	
+// Test for interaction between quadratic term and AA type
+contrast i.AgentType#c.Congruence1#c.Congruence1 // chi2(2) = 38.96, p < .0001
+
+// Get quadratic coefficients for each condition
+lincom c.Congruence1#c.Congruence1	// Heuristic -0.0304907, z = -0.60, p = .550
+lincom c.Congruence1#c.Congruence1 + 2.AgentType#c.Congruence1#c.Congruence1 // DRL-AA Coefficient -0.3854438, z = -1.29, p = .198
+lincom c.Congruence1#c.Congruence1 + 3.AgentType#c.Congruence1#c.Congruence1 // DRL-HP-AA Coefficient = -1.387524, z = -6.49, p < .0001
+
+
+// Significant effect of quadratic term for RL_HP compared to baseline (Heuristic) (z = -6.17, p < .0001).
+lincom 3.AgentType#c.Congruence1#c.Congruence1 - 1.AgentType#c.Congruence1#c.Congruence1
+
+// Significant effect of quadratic term for RL_HP compared to DRL-AA (z = -2.73, p = .006).
+lincom 3.AgentType#c.Congruence1#c.Congruence1 - 2.AgentType#c.Congruence1#c.Congruence1
+
+lincom 2.AgentType#c.Congruence1#c.Congruence1 - 1.AgentType#c.Congruence1#c.Congruence1 // p = .241
 
 

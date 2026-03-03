@@ -53,3 +53,23 @@ margins i.AgentType, dydx(Congruence1)
 pwcompare i.AgentType#c.Congruence1, effects mcompare(bonferroni)
 
 // RL_HP slope is -0.156 less than RL (z = -2.03, p = 0.043)
+
+// Check for multicollinearity and non-linearity
+gen ln_time = ln(_t)
+reg ln_time i.AgentType c.Congruence1##i.AgentType c.TrialNum
+estat vif
+
+// Original Model
+mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(lognormal) time tratio
+estimates store m1
+
+// Check if Quadratic Term improves model fit.
+mestreg i.AgentType c.Congruence1 c.Congruence1#c.Congruence1 ///
+    i.AgentType#c.Congruence1 i.AgentType#c.Congruence1#c.Congruence1 c.TrialNum ///
+    || PartID: i.AgentType, distribution(lognormal) time
+estimates store m2
+
+lrtest m1 m2	// lr-test chi2(2) = 55.29, p < .0001
+
+// Test for interaction between quadratic term and AA type
+contrast i.AgentType#c.Congruence1#c.Congruence1 // chi2(1) = 0.59, p = .4406
