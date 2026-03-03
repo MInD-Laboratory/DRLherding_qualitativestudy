@@ -1,4 +1,4 @@
-// Experiment 2
+// Survival Analysis Experiment 2
 clear all
 set more off
 
