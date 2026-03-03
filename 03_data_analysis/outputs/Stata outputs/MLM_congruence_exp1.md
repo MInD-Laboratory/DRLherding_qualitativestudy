@@ -1,7 +1,26 @@
+
 . // Mixed effects model for congrunce_ Experiment1
+. 
+. clear all
+
+. set more off
+
+. 
+. local data_file "data/Long format Perf Experiment1.dta"
+
+. capture confirm file "`data_file'"
+
+. if _rc {
+.     di as error "[ERROR] Could not find `data_file'. Set working directory to 03_data_analysis and re-run."
+.     exit 601
+. }
+
+. 
+. use "`data_file'", clear
+
 . // Exclude practice trial from all analyses
 . keep if TrialNum != 1
-(0 observations deleted)
+(213 observations deleted)
 
 . 
 . 
