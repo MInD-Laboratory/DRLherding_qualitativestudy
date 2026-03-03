@@ -30,20 +30,21 @@ estimates store m1
 mixed Congruence1 i.AgentType c.TrialNum i.AgentType#c.TrialNum || PartID: i.AgentType
 estimates store m2
 
-lrtest m1 m2 // chi2(2) = 6.91, p = .0315. 2-way model provides better fit.
+lrtest m1 m2 // chi2(2) = 1.12, p = .5716. 1-way model is preferred.
 
 // To adjust for small samples, refit model with REML with Kenward-Roger estimates of error dof
-mixed Congruence1 i.AgentType c.TrialNum i.AgentType#c.TrialNum || PartID: i.AgentType, reml dfmethod(kroger)
+mixed Congruence1 i.AgentType c.TrialNum || PartID: i.AgentType, reml dfmethod(kroger)
 
 // 1-way effects
-contrast i.AgentType, small	// F(2, 893.19) = 203.44, p < .0001
+contrast i.AgentType, small	// F(2, 158.43) = 1123.18, p < .0001
 pwcompare i.AgentType, small effects mcompare(bonf) // all p < .001
 
 margins i.AgentType // Presents marginal predicted means. This is represented as z-scores
 
-// 2-way effect
-contrast i.AgentType#c.TrialNum, small // F(2, 902.46) = 3.46, p = .0319
-
-pwcompare (c.TrialNum#AgentType), mcompare(bonf) small // to get error dof
-pwcompare (c.TrialNum#AgentType), effects mcompare(bonf) small
-// RL has more negative slope compared to DMP condition (contrast = -0.0720501), t(902.5) = -2.59, p = .029. Other comparisons are p >= .278
+         Delta-method
+             |     Margin   std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   AgentType |
+        DMP  |   1.212647   .0315718    38.41   0.000     1.150767    1.274526
+         RL  |  -.8071564   .0329883   -24.47   0.000    -.8718122   -.7425006
+      RL_HP  |  -.3578347   .0315718   -11.33   0.000    -.4197143   -.2959551
