@@ -79,6 +79,11 @@ Optional: plot only selected tags (example)
 python 03_data_analysis/plot_training_logs.py --tags "Environment/Cumulative Reward" "Losses/Policy Loss"
 ```
 
+## Statistical Analysis Outputs
+
+- All statistical analysis outputs are available in [03_data_analysis/outputs/Stata outputs](03_data_analysis/outputs/Stata%20outputs).
+- On GitHub, these Markdown output files are often easier to read in the **Code** view rather than the rendered **Preview** view.
+
 ## Running the Experiment Builds
 
 ### Requirements
@@ -108,3 +113,11 @@ After each run, experiment output is saved under:
 Within this folder, CSV exports are located in:
 
 - `DesktopHerding_HumanAI_Experiments_2022_Data/OutData/CSV`
+
+## Contact
+
+Dr. Gaurav Patil  
+Macquarie University  
+Email: gaurav.patil@mq.edu.au
+
+For repository issues, please use the GitHub Issues feature.
