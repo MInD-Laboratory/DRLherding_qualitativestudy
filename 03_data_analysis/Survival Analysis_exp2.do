@@ -19,7 +19,7 @@ stset TrialTime, failure(Success=1)
 // note Congruence1 is Congruence z-scored
 histogram Congruence, normal
 
-// Run this first
+// Run this first. Could not fit model with AgentType as random slope so removed.
 frame create frame2 str32 model float(aic bic)
 foreach model in exponential loglogistic weibull lognormal ggamma  {
     quietly mestreg AgentType##c.Congruence1 c.TrialNum || PartID:, distribution(`model') time

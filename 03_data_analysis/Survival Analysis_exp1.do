@@ -24,7 +24,7 @@ histogram Congruence, normal
 // Run this first
 frame create frame1 str32 model float(aic bic)
 foreach model in exponential loglogistic weibull lognormal ggamma  {
-    quietly mestreg AgentType##c.Congruence1 c.TrialNum || PartID:, distribution(`model') time
+    quietly mestreg i.AgentType##c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(`model') time
     quietly estat ic
     matrix S = r(S)
     frame post frame1 ("`model'") (S[1,5]) (S[1, 6])
@@ -47,27 +47,27 @@ frame drop frame1
 mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(lognormal) time tratio
 
 contrast i.AgentType	// chi2(2) = 225.50, p < .0001
-pwcompare i.AgentType, effects
+pwcompare i.AgentType, effects tratio
 
 margins, dydx(Congruence1) pwcompare(effects)	// Congruence slope is significant (52.01 slope); z = 5.64, p < .0001
-
-
-
 margins i.AgentType, dydx(Congruence1)
-
 margins AgentType, at(Congruence1=(-1(1)1)) vsquish 
 marginsplot
-
 
 // AgentType#Congruence1 interaction
 contrast i.AgentType#c.Congruence1	//chi2(2) = 101.65, p < .0001
 
-margins i.AgentType, dydx(Congruence1)
-pwcompare i.AgentType#c.Congruence1, effects mcompare(bonferroni)
+// Heuristic Agent
+lincom Congruence1, eform // Time-ratio = 0.79
 
-// RL slope is 1.62 more than DMP
-// RL_HP slope is 0.54 more than DMP
-// RL_HP slope is -1.08 less than RL
+// RL Agent
+lincom Congruence1 + 2.AgentType#c.Congruence1, eform   // Time-ratio = 4.02
+
+// RL-HP Agent
+lincom Congruence1 + 3.AgentType#c.Congruence1, eform   // e.g., Time-ratio = 1.36
+
+pwcompare i.AgentType#c.Congruence1, effects mcompare(bonferroni) // all p < .001
+
 
 predict xbhat, xb  // Get linear predictor (log scale)
 gen yhat = exp(xbhat)  // Convert back to original time scale
