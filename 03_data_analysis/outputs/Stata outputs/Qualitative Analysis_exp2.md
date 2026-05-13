@@ -1,4 +1,3 @@
-
 . // Qualitative Analysis Experiment 2
 . *--------------------------------------------*
 . * Step 0: Import CSV
@@ -81,7 +80,7 @@ Scoring coefficients
 
 . 
 . * Keep only needed variables and save to disk
-. keep part_id agent_type component score
+. keep part_id agent_type component score block
 
 . save "temp_pos.dta", replace
 file temp_pos.dta saved
@@ -98,7 +97,7 @@ file temp_pos.dta saved
 
 . gen score = q4
 
-. keep part_id agent_type component score
+. keep part_id agent_type component score block
 
 . 
 . * Append positive attribution rows
@@ -159,8 +158,446 @@ file temp_pos.dta saved
 . * Optional: Export graph
 . *--------------------------------------------*
 . graph export "ratings_boxplot_exp2.png", replace
-(file ratings_boxplot_exp2.png not found)
 file ratings_boxplot_exp2.png saved as PNG format
+
+. 
+. encode component, gen(component_num)
+
+. 
+. *--------------------------------------------*
+. * Step 5: Descriptive statistics by agent and component
+. *--------------------------------------------*
+. bysort component agent_code_ordered: summarize score
+
+------------------------------------------------------------------------------------------------------------------------
+-> component = Positive Attribution, agent_code_ordered = DRL-HP-AA
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       score |        160    4.946875    1.534813          1          7
+
+------------------------------------------------------------------------------------------------------------------------
+-> component = Positive Attribution, agent_code_ordered = DRL-AA
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       score |        160    4.471875    1.582875          1          7
+
+------------------------------------------------------------------------------------------------------------------------
+-> component = Strategy Effect, agent_code_ordered = DRL-HP-AA
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       score |        160      4.8875    1.919734          1          7
+
+------------------------------------------------------------------------------------------------------------------------
+-> component = Strategy Effect, agent_code_ordered = DRL-AA
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+       score |        160        4.75    1.906625          1          7
+
+
+. 
+. *--------------------------------------------*
+. * Step 6: ICC check (justification for MLM)
+. *--------------------------------------------*
+. // Positive Attribution
+. mixed score if component_num == 1 || part_id:, reml
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log restricted-likelihood = -572.87105  
+Iteration 1:  Log restricted-likelihood = -572.87105  
+
+Computing standard errors ...
+
+Mixed-effects REML regression                           Number of obs    = 320
+Group variable: part_id                                 Number of groups =  40
+                                                        Obs per group:
+                                                                     min =   8
+                                                                     avg = 8.0
+                                                                     max =   8
+                                                        Wald chi2(0)     =   .
+Log restricted-likelihood = -572.87105                  Prob > chi2      =   .
+
+------------------------------------------------------------------------------
+       score | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _cons |   4.709375   .1562749    30.14   0.000     4.403082    5.015668
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   .7598257   .2219776      .4285895    1.347058
+-----------------------------+------------------------------------------------
+               var(Residual) |   1.736384   .1467512      1.471316    2.049205
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 54.98         Prob >= chibar2 = 0.0000
+
+. estat icc
+
+Intraclass correlation
+
+------------------------------------------------------------------------------
+                       Level |        ICC   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+                     part_id |   .3043918   .0657993      .1922358    .4458644
+------------------------------------------------------------------------------
+
+. 
+. // Strategy Effect
+. mixed score if component_num == 2 || part_id:, reml
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log restricted-likelihood = -620.92418  
+Iteration 1:  Log restricted-likelihood = -620.92418  
+
+Computing standard errors ...
+
+Mixed-effects REML regression                           Number of obs    = 320
+Group variable: part_id                                 Number of groups =  40
+                                                        Obs per group:
+                                                                     min =   8
+                                                                     avg = 8.0
+                                                                     max =   8
+                                                        Wald chi2(0)     =   .
+Log restricted-likelihood = -620.92418                  Prob > chi2      =   .
+
+------------------------------------------------------------------------------
+       score | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       _cons |    4.81875   .2063179    23.36   0.000     4.414374    5.223126
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   1.419536   .3863237      .8327101     2.41991
+-----------------------------+------------------------------------------------
+               var(Residual) |   2.265179   .1914425      1.919388    2.673266
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 82.53         Prob >= chibar2 = 0.0000
+
+. estat icc
+
+Intraclass correlation
+
+------------------------------------------------------------------------------
+                       Level |        ICC   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+                     part_id |     .38525   .0686638      .2620063    .5252087
+------------------------------------------------------------------------------
+
+. 
+. *--------------------------------------------*
+. * Step 7: LRT chi-square tests (ML, not REML)
+. *--------------------------------------------*
+. // Positive Attribution: null vs full model
+. mixed score i.block if component_num == 1 || part_id:, ml
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -571.16866  
+Iteration 1:  Log likelihood = -571.16866  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                          Number of obs    =    320
+Group variable: part_id                              Number of groups =     40
+                                                     Obs per group:
+                                                                  min =      8
+                                                                  avg =    8.0
+                                                                  max =      8
+                                                     Wald chi2(1)     =   1.52
+Log likelihood = -571.16866                          Prob > chi2      = 0.2173
+
+------------------------------------------------------------------------------
+       score | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     2.block |     .18125   .1469268     1.23   0.217    -.1067212    .4692212
+       _cons |    4.61875   .1709039    27.03   0.000     4.283785    4.953715
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   .7365759   .2137545      .4170601    1.300877
+-----------------------------+------------------------------------------------
+               var(Residual) |   1.726998    .145958      1.463363    2.038128
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 54.30         Prob >= chibar2 = 0.0000
+
+. estimates store null_pa
+
+. 
+. mixed score i.agent_code_ordered i.block if component_num == 1 || part_id:, ml
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log likelihood =  -565.8428  
+Iteration 1:  Log likelihood =  -565.8428  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                          Number of obs    =    320
+Group variable: part_id                              Number of groups =     40
+                                                     Obs per group:
+                                                                  min =      8
+                                                                  avg =    8.0
+                                                                  max =      8
+                                                     Wald chi2(2)     =  12.44
+Log likelihood =  -565.8428                          Prob > chi2      = 0.0020
+
+------------------------------------------------------------------------------------
+             score | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------------+----------------------------------------------------------------
+agent_code_ordered |
+           DRL-AA  |      -.475   .1441585    -3.29   0.001    -.7575454   -.1924546
+           2.block |     .18125   .1441585     1.26   0.209    -.1012954    .4637954
+             _cons |    4.85625   .1849382    26.26   0.000     4.493778    5.218722
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   .7446351   .2136978      .4242902    1.306845
+-----------------------------+------------------------------------------------
+               var(Residual) |   1.662533   .1405097       1.40874     1.96205
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 57.54         Prob >= chibar2 = 0.0000
+
+. estimates store full_pa
+
+. 
+. lrtest null_pa full_pa  // chi2(1) for agent_code effect
+
+Likelihood-ratio test
+Assumption: null_pa nested within full_pa
+
+ LR chi2(1) =  10.65
+Prob > chi2 = 0.0011
+
+. 
+. // Strategy Effect: null vs full model
+. mixed score i.block if component_num == 2 || part_id:, ml
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -620.21428  
+Iteration 1:  Log likelihood = -620.21428  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                          Number of obs    =    320
+Group variable: part_id                              Number of groups =     40
+                                                     Obs per group:
+                                                                  min =      8
+                                                                  avg =    8.0
+                                                                  max =      8
+                                                     Wald chi2(1)     =   0.09
+Log likelihood = -620.21428                          Prob > chi2      = 0.7663
+
+------------------------------------------------------------------------------
+       score | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     2.block |        .05   .1682433     0.30   0.766    -.2797508    .3797508
+       _cons |    4.79375   .2204073    21.75   0.000      4.36176     5.22574
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   1.377059   .3719834      .8109952    2.338227
+-----------------------------+------------------------------------------------
+               var(Residual) |   2.264464   .1913822      1.918783    2.672423
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 81.26         Prob >= chibar2 = 0.0000
+
+. estimates store null_se
+
+. 
+. mixed score i.agent_code_ordered i.block if component_num == 2 || part_id:, ml
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -619.87991  
+Iteration 1:  Log likelihood = -619.87991  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                          Number of obs    =    320
+Group variable: part_id                              Number of groups =     40
+                                                     Obs per group:
+                                                                  min =      8
+                                                                  avg =    8.0
+                                                                  max =      8
+                                                     Wald chi2(2)     =   0.76
+Log likelihood = -619.87991                          Prob > chi2      = 0.6845
+
+------------------------------------------------------------------------------------
+             score | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+-------------------+----------------------------------------------------------------
+agent_code_ordered |
+           DRL-AA  |     -.1375   .1680425    -0.82   0.413    -.4668572    .1918572
+           2.block |        .05   .1680425     0.30   0.766    -.2793572    .3793572
+             _cons |     4.8625   .2358433    20.62   0.000     4.400256    5.324744
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   1.377734   .3719798      .8116077    2.338754
+-----------------------------+------------------------------------------------
+               var(Residual) |   2.259063   .1909256      1.914206    2.666048
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 81.51         Prob >= chibar2 = 0.0000
+
+. estimates store full_se
+
+. 
+. lrtest null_se full_se  // chi2(1) for agent_code effect
+
+Likelihood-ratio test
+Assumption: null_se nested within full_se
+
+ LR chi2(1) =   0.67
+Prob > chi2 = 0.4135
+
+. 
+. *--------------------------------------------*
+. * Step 8: Final REML + Kenward-Roger models for reporting
+. *--------------------------------------------*
+. // Positive Attribution
+. mixed score i.agent_code_ordered i.block if component_num == 1 || part_id:, reml dfmethod(kroger)
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log restricted-likelihood = -568.81858  
+Iteration 1:  Log restricted-likelihood = -568.81858  
+
+Computing standard errors ...
+
+Computing degrees of freedom ...
+
+Mixed-effects REML regression                        Number of obs    =    320
+Group variable: part_id                              Number of groups =     40
+                                                     Obs per group:
+                                                                  min =      8
+                                                                  avg =    8.0
+                                                                  max =      8
+DF method: Kenward–Roger                             DF:          min =  77.59
+                                                                  avg = 211.20
+                                                                  max = 278.00
+                                                     F(2, 278.00)     =   6.17
+Log restricted-likelihood = -568.81858               Prob > F         = 0.0024
+
+------------------------------------------------------------------------------------
+             score | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------------+----------------------------------------------------------------
+agent_code_ordered |
+           DRL-AA  |      -.475   .1446761    -3.28   0.001    -.7597998   -.1902002
+           2.block |     .18125   .1446761     1.25   0.211    -.1035498    .4660498
+             _cons |    4.85625   .1867817    26.00   0.000     4.484365    5.228135
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   .7675609   .2219293      .4355119    1.352775
+-----------------------------+------------------------------------------------
+               var(Residual) |   1.674494   .1420288      1.418031    1.977341
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 57.96         Prob >= chibar2 = 0.0000
+
+. margins agent_code_ordered, pwcompare(effects)
+
+Pairwise comparisons of predictive margins                 Number of obs = 320
+
+Expression: Linear prediction, fixed portion, predict()
+
+--------------------------------------------------------------------------------------
+                     |            Delta-method    Unadjusted           Unadjusted
+                     |   Contrast   std. err.      z    P>|z|     [95% conf. interval]
+---------------------+----------------------------------------------------------------
+  agent_code_ordered |
+DRL-AA vs DRL-HP-AA  |      -.475   .1446761    -3.28   0.001      -.75856     -.19144
+--------------------------------------------------------------------------------------
+
+. 
+. // Strategy Effect
+. mixed score i.agent_code_ordered i.block if component_num == 2 || part_id:, reml dfmethod(kroger)
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:  Log restricted-likelihood = -622.27129  
+Iteration 1:  Log restricted-likelihood = -622.27129  
+
+Computing standard errors ...
+
+Computing degrees of freedom ...
+
+Mixed-effects REML regression                        Number of obs    =    320
+Group variable: part_id                              Number of groups =     40
+                                                     Obs per group:
+                                                                  min =      8
+                                                                  avg =    8.0
+                                                                  max =      8
+DF method: Kenward–Roger                             DF:          min =  68.34
+                                                                  avg = 208.11
+                                                                  max = 278.00
+                                                     F(2, 278.00)     =   0.38
+Log restricted-likelihood = -622.27129               Prob > F         = 0.6867
+
+------------------------------------------------------------------------------------
+             score | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------------+----------------------------------------------------------------
+agent_code_ordered |
+           DRL-AA  |     -.1375   .1686459    -0.82   0.416    -.4694852    .1944852
+           2.block |        .05   .1686459     0.30   0.767    -.2819852    .3819852
+             _cons |     4.8625   .2383019    20.40   0.000     4.387019    5.337981
+------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+part_id: Identity            |
+                  var(_cons) |   1.418269   .3863357      .8315566    2.418942
+-----------------------------+------------------------------------------------
+               var(Residual) |   2.275315   .1929897      1.926831    2.686826
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 81.86         Prob >= chibar2 = 0.0000
+
+. margins agent_code_ordered, pwcompare(effects)
+
+Pairwise comparisons of predictive margins                 Number of obs = 320
+
+Expression: Linear prediction, fixed portion, predict()
+
+--------------------------------------------------------------------------------------
+                     |            Delta-method    Unadjusted           Unadjusted
+                     |   Contrast   std. err.      z    P>|z|     [95% conf. interval]
+---------------------+----------------------------------------------------------------
+  agent_code_ordered |
+DRL-AA vs DRL-HP-AA  |     -.1375   .1686459    -0.82   0.415    -.4680399    .1930399
+--------------------------------------------------------------------------------------
 
 . 
 end of do-file
