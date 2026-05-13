@@ -41,8 +41,8 @@ Observed time interval: (0, TrialTime]
 . 
 . graph set window fontface "Times New Roman" 
 
-. sts graph, by(AgentType) ci failure title("") ylabel(0(0.2)1, angle(0)) ytitle("Success Probability") xlabel(0(10)100, labsize(small)) legend(order(7 "Heuristic-AA" 9 "DRL-HP-AA
-> " 8 "DRL-AA" 1 "95% CI" 5 "95% CI" 3 "95% CI") cols(7) position(1)) graphregion(color(white)) xtitle("Trial Time (s)")
+. sts graph, by(AgentType) ci failure title("") ylabel(0(0.2)1, angle(0)) ytitle("Success Probability") xlabel(0(10)100, labsize(small)) legend(order(7 "Heuristic-AA" 9 "DRL-HP-AA" 8 "DRL-AA" 1 "95% CI" 5 "95% CI" 3 "95% CI") cols(7) position(1)) graph
+> region(color(white)) xtitle("Trial Time (s)")
 
         Failure _d: Success==1
   Analysis time _t: TrialTime
@@ -69,7 +69,7 @@ end of do-file
 
 r(198);
 
-. do "C:\Users\MQ2019~1\AppData\Local\Temp\STD10a30_000000.tmp"
+. do "C:\Users\MQ2019~1\AppData\Local\Temp\STD65e8_000000.tmp"
 
 . // then run this
 . frame change frame1
@@ -90,47 +90,51 @@ r(198);
      +---------------------------------+
 
 . 
-. // lognormal model is best fit (AIC = 7330.74; BIC = 7375.48)
+. // loglogistic model is best fit
 . 
+end of do-file
+
+. do "C:\Users\MQ2019~1\AppData\Local\Temp\STD65e8_000000.tmp"
+
 . frame change default
 
 . frame drop frame1
 
 . 
 . 
-. // Random-intercepts and Random-effect of Agent Type. Control for amount of decision-overlab (Congruence1 = z-scored Congruence), it's interaction, as well as TrialNum (serves a
-> s time)
+. // Random-intercepts and Random-effect of Agent Type. Control for amount of decision-overlab (Congruence1 = z-scored Congruence), it's interaction, as well as TrialNum (serves as time)
 . 
-. mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(lognormal) time tratio
+. mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(loglogistic) time tratio
 
         Failure _d: Success==1
   Analysis time _t: TrialTime
 
 Fitting fixed-effects model:
 
-Iteration 0:  Log likelihood = -3881.0353  
-Iteration 1:  Log likelihood = -3843.5638  
-Iteration 2:  Log likelihood =  -3723.191  
-Iteration 3:  Log likelihood = -3722.0378  
-Iteration 4:  Log likelihood = -3722.0351  
-Iteration 5:  Log likelihood = -3722.0351  
+Iteration 0:  Log likelihood = -4009.4619  
+Iteration 1:  Log likelihood = -3844.0926  
+Iteration 2:  Log likelihood = -3758.6334  
+Iteration 3:  Log likelihood =  -3724.856  
+Iteration 4:  Log likelihood = -3724.6524  
+Iteration 5:  Log likelihood = -3724.6523  
 
 Refining starting values:
 
-Grid node 0:  Log likelihood = -3728.5593
+Grid node 0:  Log likelihood = -3727.6677
 
 Fitting full model:
 
-Iteration 0:  Log likelihood = -3728.5593  (not concave)
-Iteration 1:  Log likelihood = -3684.5981  (not concave)
-Iteration 2:  Log likelihood =  -3663.222  
-Iteration 3:  Log likelihood = -3648.7462  
-Iteration 4:  Log likelihood = -3645.2204  
-Iteration 5:  Log likelihood = -3645.0689  
-Iteration 6:  Log likelihood =  -3645.068  
-Iteration 7:  Log likelihood =  -3645.068  
+Iteration 0:  Log likelihood = -3727.6677  (not concave)
+Iteration 1:  Log likelihood = -3684.7187  (not concave)
+Iteration 2:  Log likelihood = -3680.1969  (not concave)
+Iteration 3:  Log likelihood = -3663.3852  
+Iteration 4:  Log likelihood = -3654.2764  
+Iteration 5:  Log likelihood = -3643.1673  
+Iteration 6:  Log likelihood = -3641.9852  
+Iteration 7:  Log likelihood = -3641.9376  
+Iteration 8:  Log likelihood = -3641.9376  
 
-Mixed-effects lognormal AFT regression          Number of obs     =      1,065
+Mixed-effects loglogistic AFT regression        Number of obs     =      1,065
 Group variable: PartID                          Number of groups  =         71
 
                                                 Obs per group:
@@ -140,34 +144,34 @@ Group variable: PartID                          Number of groups  =         71
 
 Integration method: mvaghermite                 Integration pts.  =          7
 
-                                                Wald chi2(6)      =     648.45
-Log likelihood = -3645.068                      Prob > chi2       =     0.0000
+                                                Wald chi2(6)      =     717.45
+Log likelihood = -3641.9376                     Prob > chi2       =     0.0000
 -----------------------------------------------------------------------------------------
                      _t | Time ratio   Std. err.      z    P>|z|     [95% conf. interval]
 ------------------------+----------------------------------------------------------------
               AgentType |
-                    RL  |   10.17026   1.668474    14.14   0.000     7.373758    14.02734
-                 RL_HP  |    2.72472   .2971662     9.19   0.000     2.200328    3.374089
+                    RL  |   11.57594   1.902434    14.90   0.000     8.388157    15.97519
+                 RL_HP  |   2.986366   .3406855     9.59   0.000     2.388019    3.734636
                         |
-            Congruence1 |    .792781   .0428796    -4.29   0.000     .7130398    .8814398
+            Congruence1 |   .8150463   .0430054    -3.88   0.000     .7349692     .903848
                         |
 AgentType#c.Congruence1 |
-                    RL  |   5.070951    .843635     9.76   0.000     3.659976    7.025878
-                 RL_HP  |   1.715178   .2412255     3.84   0.000     1.301952    2.259559
+                    RL  |   5.309179   .8800171    10.07   0.000      3.83652    7.347124
+                 RL_HP  |    1.71656   .2604756     3.56   0.000     1.274957    2.311122
                         |
-               TrialNum |   .8708294   .0146913    -8.20   0.000     .8425058    .9001051
-                  _cons |   25.08758    2.46956    32.74   0.000     20.68563    30.42629
+               TrialNum |   .8729187   .0143812    -8.25   0.000     .8451822    .9015654
+                  _cons |   23.27022   2.275839    32.18   0.000     19.21111    28.18697
 ------------------------+----------------------------------------------------------------
-                  /logs |  -.3041865   .0270945                     -.3572908   -.2510822
+                  /logs |  -.8741971    .030848                     -.9346582   -.8137361
 ------------------------+----------------------------------------------------------------
 PartID                  |
-        var(2.AgentType)|   .1120586   .0581635                      .0405166    .3099254
-        var(3.AgentType)|   .1574251   .0582977                      .0761828    .3253052
-              var(_cons)|   .1343576    .035057                      .0805683    .2240579
+        var(2.AgentType)|   .1044851   .0549414                      .0372792    .2928476
+        var(3.AgentType)|   .2038554   .0656129                      .1084812    .3830805
+              var(_cons)|   .1244081   .0339039                      .0729252    .2122363
 -----------------------------------------------------------------------------------------
 Note: Estimates are transformed only in the first equation to time ratios.
 Note: _cons estimates baseline time (conditional on zero random effects).
-LR test vs. lognormal model: chi2(3) = 153.93             Prob > chi2 = 0.0000
+LR test vs. loglogistic model: chi2(3) = 165.43           Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 
@@ -182,7 +186,7 @@ Margins: asbalanced
              |         df        chi2     P>chi2
 -------------+----------------------------------
 _t           |
-   AgentType |          2      225.50     0.0000
+   AgentType |          2      253.48     0.0000
 ------------------------------------------------
 
 . pwcompare i.AgentType, effects tratio
@@ -197,9 +201,9 @@ Margins: asbalanced
 --------------+----------------------------------------------------------------
 _t            |
     AgentType |
-   RL vs DMP  |   10.17026   1.668474    14.14   0.000     7.373758    14.02734
-RL_HP vs DMP  |    2.72472   .2971662     9.19   0.000     2.200328    3.374089
- RL_HP vs RL  |   .2679106   .0446093    -7.91   0.000     .1933115    .3712975
+   RL vs DMP  |   11.57594   1.902434    14.90   0.000     8.388157    15.97519
+RL_HP vs DMP  |   2.986366   .3406855     9.59   0.000     2.388019    3.734636
+ RL_HP vs RL  |   .2579804   .0442512    -7.90   0.000     .1843235    .3610711
 -------------------------------------------------------------------------------
 
 . 
@@ -216,7 +220,7 @@ dy/dx wrt:  Congruence1
              |            Delta-method
              |      dy/dx   std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
- Congruence1 |   52.01784   9.216568     5.64   0.000      33.9537    70.08198
+ Congruence1 |   58.13792   10.10885     5.75   0.000     38.32494    77.95091
 ------------------------------------------------------------------------------
 
 . margins i.AgentType, dydx(Congruence1)
@@ -233,9 +237,9 @@ dy/dx wrt:  Congruence1
 -------------+----------------------------------------------------------------
 Congruence1  |
    AgentType |
-        DMP  |  -5.646968   1.766071    -3.20   0.001    -9.108403   -2.185532
-         RL  |   1160.775   597.1165     1.94   0.052    -9.551379    2331.102
-      RL_HP  |   22.58489   11.83834     1.91   0.056    -.6178229     45.7876
+        DMP  |  -4.747473   1.596847    -2.97   0.003    -7.877235    -1.61771
+         RL  |   1510.334   784.9995     1.92   0.054    -28.23705    3048.905
+      RL_HP  |   26.84818   14.48129     1.85   0.064    -1.534617    55.23099
 ------------------------------------------------------------------------------
 
 . margins AgentType, at(Congruence1=(-1(1)1)) vsquish 
@@ -253,15 +257,15 @@ Expression: Marginal predicted mean, predict()
               |     Margin   std. err.      z    P>|z|     [95% conf. interval]
 --------------+----------------------------------------------------------------
 _at#AgentType |
-       1#DMP  |   29.90426   3.957045     7.56   0.000      22.1486    37.65993
-        1#RL  |   63.43208   5.759146    11.01   0.000     52.14436     74.7198
-     1#RL_HP  |   51.39611   6.035525     8.52   0.000     39.56669    63.22552
-       2#DMP  |   23.70753   2.103853    11.27   0.000     19.58406    27.83101
-        2#RL  |   255.0067   40.21775     6.34   0.000     176.1814     333.832
-     2#RL_HP  |   69.88641   6.928912    10.09   0.000     56.30599    83.46682
-       3#DMP  |   18.79488   1.202229    15.63   0.000     16.43855    21.15121
-        3#RL  |   1025.166   307.8761     3.33   0.001     421.7401    1628.592
-     3#RL_HP  |   95.02879   18.92005     5.02   0.000     57.94618    132.1114
+       1#DMP  |   27.91894   3.672959     7.60   0.000     20.72007     35.1178
+        1#RL  |   64.13814   5.662489    11.33   0.000     53.03987    75.23642
+     1#RL_HP  |   53.78354   6.842394     7.86   0.000      40.3727    67.19439
+       2#DMP  |   22.75523   2.026609    11.23   0.000     18.78315    26.72731
+        2#RL  |   277.5403    43.7149     6.35   0.000     191.8607    363.2199
+     2#RL_HP  |   75.24728   7.964924     9.45   0.000     59.63632    90.85824
+       3#DMP  |   18.54656   1.191099    15.57   0.000     16.21205    20.88107
+        3#RL  |    1200.98   361.1107     3.33   0.001     493.2159    1908.744
+     3#RL_HP  |   105.2767   22.76803     4.62   0.000     60.65216    149.9012
 -------------------------------------------------------------------------------
 
 . marginsplot
@@ -280,7 +284,7 @@ Margins: asbalanced
                         |         df        chi2     P>chi2
 ------------------------+----------------------------------
 _t                      |
-AgentType#c.Congruence1 |          2      101.65     0.0000
+AgentType#c.Congruence1 |          2      107.08     0.0000
 -----------------------------------------------------------
 
 . 
@@ -292,7 +296,7 @@ AgentType#c.Congruence1 |          2      101.65     0.0000
 ------------------------------------------------------------------------------
           _t |     exp(b)   Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |    .792781   .0428796    -4.29   0.000     .7130398    .8814398
+         (1) |   .8150463   .0430054    -3.88   0.000     .7349692     .903848
 ------------------------------------------------------------------------------
 
 . 
@@ -304,7 +308,7 @@ AgentType#c.Congruence1 |          2      101.65     0.0000
 ------------------------------------------------------------------------------
           _t |     exp(b)   Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |   4.020154   .6272458     8.92   0.000     2.960968    5.458228
+         (1) |   4.327227    .674445     9.40   0.000     3.188165    5.873252
 ------------------------------------------------------------------------------
 
 . 
@@ -316,7 +320,7 @@ AgentType#c.Congruence1 |          2      101.65     0.0000
 ------------------------------------------------------------------------------
           _t |     exp(b)   Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |   1.359761    .176692     2.36   0.018     1.054034    1.754166
+         (1) |   1.399076    .199212     2.36   0.018     1.058377    1.849449
 ------------------------------------------------------------------------------
 
 . 
@@ -340,9 +344,9 @@ AgentType#c.Congruence1 |            3
 ------------------------+----------------------------------------------------------------
 _t                      |
 AgentType#c.Congruence1 |
-             RL vs DMP  |   1.623528   .1663662     9.76   0.000     1.225251    2.021806
-          RL_HP vs DMP  |   .5395171   .1406416     3.84   0.000     .2028239    .8762103
-           RL_HP vs RL  |  -1.084011   .2027144    -5.35   0.000    -1.569306   -.5987172
+             RL vs DMP  |   1.669437   .1657539    10.07   0.000     1.272626    2.066249
+          RL_HP vs DMP  |   .5403226   .1517428     3.56   0.001     .1770535    .9035917
+           RL_HP vs RL  |  -1.129115     .21092    -5.35   0.000    -1.634053   -.6241764
 -----------------------------------------------------------------------------------------
 
 . 
@@ -351,10 +355,9 @@ AgentType#c.Congruence1 |
 
 . gen yhat = exp(xbhat)  // Convert back to original time scale
 
-. twoway (lfit TrialTime Congruence if AgentType == 1, lcolor(blue) lwidth(medium)) (lfit TrialTime Congruence if AgentType == 2, lcolor(orange) lwidth(medium)) (lfit TrialTime Co
-> ngruence if AgentType == 3, lcolor(green) lwidth(medium)) (scatter TrialTime Congruence if AgentType == 1, mcolor(blue) msize(small)) (scatter TrialTime Congruence if AgentType 
-> == 2, mcolor(orange) msize(small)) (scatter TrialTime Congruence if AgentType == 3, mcolor(green) msize(small)), legend(order(1 "Heuristic-AA" 3 "DRL-HP-AA" 2 "DRL-AA") cols(9) 
-> position(1)) xtitle("Congruence") ytitle("Trial Time (s)") title("") ylabel(0(20)120)
+. twoway (lfit TrialTime Congruence if AgentType == 1, lcolor(blue) lwidth(medium)) (lfit TrialTime Congruence if AgentType == 2, lcolor(orange) lwidth(medium)) (lfit TrialTime Congruence if AgentType == 3, lcolor(green) lwidth(medium)) (scatter TrialT
+> ime Congruence if AgentType == 1, mcolor(blue) msize(small)) (scatter TrialTime Congruence if AgentType == 2, mcolor(orange) msize(small)) (scatter TrialTime Congruence if AgentType == 3, mcolor(green) msize(small)), legend(order(1 "Heuristic-AA" 3 "
+> DRL-HP-AA" 2 "DRL-AA") cols(9) position(1)) xtitle("Congruence") ytitle("Trial Time (s)") title("") ylabel(0(20)120)
 
 . 
 . // Check for multicollinearity and non-linearity
@@ -404,37 +407,38 @@ AgentType#c.Congruence1 |
     Mean VIF |      3.75
 
 . 
-. // Original Model
-. mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(lognormal) time tratio
+. // Linear model (for quadratic LRT comparison)
+. mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(loglogistic) time tratio
 
         Failure _d: Success==1
   Analysis time _t: TrialTime
 
 Fitting fixed-effects model:
 
-Iteration 0:  Log likelihood = -3881.0353  
-Iteration 1:  Log likelihood = -3843.5638  
-Iteration 2:  Log likelihood =  -3723.191  
-Iteration 3:  Log likelihood = -3722.0378  
-Iteration 4:  Log likelihood = -3722.0351  
-Iteration 5:  Log likelihood = -3722.0351  
+Iteration 0:  Log likelihood = -4009.4619  
+Iteration 1:  Log likelihood = -3844.0926  
+Iteration 2:  Log likelihood = -3758.6334  
+Iteration 3:  Log likelihood =  -3724.856  
+Iteration 4:  Log likelihood = -3724.6524  
+Iteration 5:  Log likelihood = -3724.6523  
 
 Refining starting values:
 
-Grid node 0:  Log likelihood = -3728.5593
+Grid node 0:  Log likelihood = -3727.6677
 
 Fitting full model:
 
-Iteration 0:  Log likelihood = -3728.5593  (not concave)
-Iteration 1:  Log likelihood = -3684.5981  (not concave)
-Iteration 2:  Log likelihood =  -3663.222  
-Iteration 3:  Log likelihood = -3648.7462  
-Iteration 4:  Log likelihood = -3645.2204  
-Iteration 5:  Log likelihood = -3645.0689  
-Iteration 6:  Log likelihood =  -3645.068  
-Iteration 7:  Log likelihood =  -3645.068  
+Iteration 0:  Log likelihood = -3727.6677  (not concave)
+Iteration 1:  Log likelihood = -3684.7187  (not concave)
+Iteration 2:  Log likelihood = -3680.1969  (not concave)
+Iteration 3:  Log likelihood = -3663.3852  
+Iteration 4:  Log likelihood = -3654.2764  
+Iteration 5:  Log likelihood = -3643.1673  
+Iteration 6:  Log likelihood = -3641.9852  
+Iteration 7:  Log likelihood = -3641.9376  
+Iteration 8:  Log likelihood = -3641.9376  
 
-Mixed-effects lognormal AFT regression          Number of obs     =      1,065
+Mixed-effects loglogistic AFT regression        Number of obs     =      1,065
 Group variable: PartID                          Number of groups  =         71
 
                                                 Obs per group:
@@ -444,34 +448,34 @@ Group variable: PartID                          Number of groups  =         71
 
 Integration method: mvaghermite                 Integration pts.  =          7
 
-                                                Wald chi2(6)      =     648.45
-Log likelihood = -3645.068                      Prob > chi2       =     0.0000
+                                                Wald chi2(6)      =     717.45
+Log likelihood = -3641.9376                     Prob > chi2       =     0.0000
 -----------------------------------------------------------------------------------------
                      _t | Time ratio   Std. err.      z    P>|z|     [95% conf. interval]
 ------------------------+----------------------------------------------------------------
               AgentType |
-                    RL  |   10.17026   1.668474    14.14   0.000     7.373758    14.02734
-                 RL_HP  |    2.72472   .2971662     9.19   0.000     2.200328    3.374089
+                    RL  |   11.57594   1.902434    14.90   0.000     8.388157    15.97519
+                 RL_HP  |   2.986366   .3406855     9.59   0.000     2.388019    3.734636
                         |
-            Congruence1 |    .792781   .0428796    -4.29   0.000     .7130398    .8814398
+            Congruence1 |   .8150463   .0430054    -3.88   0.000     .7349692     .903848
                         |
 AgentType#c.Congruence1 |
-                    RL  |   5.070951    .843635     9.76   0.000     3.659976    7.025878
-                 RL_HP  |   1.715178   .2412255     3.84   0.000     1.301952    2.259559
+                    RL  |   5.309179   .8800171    10.07   0.000      3.83652    7.347124
+                 RL_HP  |    1.71656   .2604756     3.56   0.000     1.274957    2.311122
                         |
-               TrialNum |   .8708294   .0146913    -8.20   0.000     .8425058    .9001051
-                  _cons |   25.08758    2.46956    32.74   0.000     20.68563    30.42629
+               TrialNum |   .8729187   .0143812    -8.25   0.000     .8451822    .9015654
+                  _cons |   23.27022   2.275839    32.18   0.000     19.21111    28.18697
 ------------------------+----------------------------------------------------------------
-                  /logs |  -.3041865   .0270945                     -.3572908   -.2510822
+                  /logs |  -.8741971    .030848                     -.9346582   -.8137361
 ------------------------+----------------------------------------------------------------
 PartID                  |
-        var(2.AgentType)|   .1120586   .0581635                      .0405166    .3099254
-        var(3.AgentType)|   .1574251   .0582977                      .0761828    .3253052
-              var(_cons)|   .1343576    .035057                      .0805683    .2240579
+        var(2.AgentType)|   .1044851   .0549414                      .0372792    .2928476
+        var(3.AgentType)|   .2038554   .0656129                      .1084812    .3830805
+              var(_cons)|   .1244081   .0339039                      .0729252    .2122363
 -----------------------------------------------------------------------------------------
 Note: Estimates are transformed only in the first equation to time ratios.
 Note: _cons estimates baseline time (conditional on zero random effects).
-LR test vs. lognormal model: chi2(3) = 153.93             Prob > chi2 = 0.0000
+LR test vs. loglogistic model: chi2(3) = 165.43           Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 
@@ -481,34 +485,38 @@ Note: LR test is conservative and provided only for reference.
 . // Check if Quadratic Term improves model fit.
 . mestreg i.AgentType c.Congruence1 c.Congruence1#c.Congruence1 ///
 >     i.AgentType#c.Congruence1 i.AgentType#c.Congruence1#c.Congruence1 c.TrialNum ///
->     || PartID: i.AgentType, distribution(lognormal) time tratio
+>     || PartID: i.AgentType, distribution(loglogistic) time tratio
 
         Failure _d: Success==1
   Analysis time _t: TrialTime
 
 Fitting fixed-effects model:
 
-Iteration 0:  Log likelihood = -3844.6214  
-Iteration 1:  Log likelihood = -3790.2518  
-Iteration 2:  Log likelihood = -3698.0463  
-Iteration 3:  Log likelihood = -3697.6253  
-Iteration 4:  Log likelihood =  -3697.625  
+Iteration 0:  Log likelihood = -3993.0724  
+Iteration 1:  Log likelihood = -3804.1044  
+Iteration 2:  Log likelihood = -3740.5259  
+Iteration 3:  Log likelihood = -3698.5882  
+Iteration 4:  Log likelihood = -3698.0877  
+Iteration 5:  Log likelihood =  -3698.085  
+Iteration 6:  Log likelihood =  -3698.085  
 
 Refining starting values:
 
-Grid node 0:  Log likelihood = -3712.0613
+Grid node 0:  Log likelihood = -3710.1902
 
 Fitting full model:
 
-Iteration 0:  Log likelihood = -3712.0613  (not concave)
-Iteration 1:  Log likelihood = -3667.5992  (not concave)
-Iteration 2:  Log likelihood = -3645.9438  
-Iteration 3:  Log likelihood = -3631.0294  
-Iteration 4:  Log likelihood = -3624.0076  
-Iteration 5:  Log likelihood = -3623.8225  
-Iteration 6:  Log likelihood = -3623.8223  
+Iteration 0:  Log likelihood = -3710.1902  (not concave)
+Iteration 1:  Log likelihood = -3666.2587  (not concave)
+Iteration 2:  Log likelihood = -3657.5679  (not concave)
+Iteration 3:  Log likelihood = -3641.6096  
+Iteration 4:  Log likelihood = -3632.6417  
+Iteration 5:  Log likelihood = -3622.2081  
+Iteration 6:  Log likelihood = -3620.3531  
+Iteration 7:  Log likelihood = -3620.2748  
+Iteration 8:  Log likelihood = -3620.2745  
 
-Mixed-effects lognormal AFT regression          Number of obs     =      1,065
+Mixed-effects loglogistic AFT regression        Number of obs     =      1,065
 Group variable: PartID                          Number of groups  =         71
 
                                                 Obs per group:
@@ -518,40 +526,40 @@ Group variable: PartID                          Number of groups  =         71
 
 Integration method: mvaghermite                 Integration pts.  =          7
 
-                                                Wald chi2(9)      =     732.77
-Log likelihood = -3623.8223                     Prob > chi2       =     0.0000
+                                                Wald chi2(9)      =     809.55
+Log likelihood = -3620.2745                     Prob > chi2       =     0.0000
 -------------------------------------------------------------------------------------------------------
                                    _t | Time ratio   Std. err.      z    P>|z|     [95% conf. interval]
 --------------------------------------+----------------------------------------------------------------
                             AgentType |
-                                  RL  |   8.357412   1.874505     9.47   0.000     5.384602    12.97149
-                               RL_HP  |   2.900442   .3223281     9.58   0.000     2.332757    3.606274
+                                  RL  |   9.332486   2.146303     9.71   0.000     5.946158    14.64732
+                               RL_HP  |   3.188224   .3706323     9.97   0.000     2.538612    4.004067
                                       |
-                          Congruence1 |   .8584752   .1114511    -1.18   0.240     .6656117    1.107222
+                          Congruence1 |   .8782446   .1190009    -0.96   0.338      .673409    1.145387
                                       |
-          c.Congruence1#c.Congruence1 |   .9699695   .0495296    -0.60   0.550     .8775929     1.07207
+          c.Congruence1#c.Congruence1 |   .9727817   .0509249    -0.53   0.598     .8779204    1.077893
                                       |
               AgentType#c.Congruence1 |
-                                  RL  |    2.46948   1.285179     1.74   0.082     .8904696    6.848446
-                               RL_HP  |   .6770059   .1517768    -1.74   0.082     .4362777    1.050563
+                                  RL  |   2.493149    1.30338     1.75   0.081     .8948563    6.946136
+                               RL_HP  |   .6859301   .1539569    -1.68   0.093     .4418021    1.064957
                                       |
 AgentType#c.Congruence1#c.Congruence1 |
-                                  RL  |   .7012063   .2122411    -1.17   0.241     .3874397    1.269076
-                               RL_HP  |   .2574235   .0566202    -6.17   0.000     .1672733     .396159
+                                  RL  |   .6882481   .2040103    -1.26   0.208     .3849746    1.230433
+                               RL_HP  |   .2588661   .0554658    -6.31   0.000     .1700956    .3939647
                                       |
-                             TrialNum |   .8666679   .0143031    -8.67   0.000      .839083    .8951598
-                                _cons |   24.61128   2.540697    31.03   0.000     20.10306     30.1305
+                             TrialNum |   .8697518   .0139954    -8.67   0.000     .8427494    .8976193
+                                _cons |   22.72163   2.415883    29.38   0.000     18.44741    27.98619
 --------------------------------------+----------------------------------------------------------------
-                                /logs |  -.3282375   .0271766                     -.3815027   -.2749723
+                                /logs |  -.8999863   .0309337                     -.9606153   -.8393573
 --------------------------------------+----------------------------------------------------------------
 PartID                                |
-                      var(2.AgentType)|   .1107426   .0562709                      .0409072    .2997989
-                      var(3.AgentType)|   .1200733   .0505746                      .0525923    .2741387
-                            var(_cons)|   .1353654   .0346902                      .0819162    .2236896
+                      var(2.AgentType)|   .1032884   .0530979                      .0377112    .2828996
+                      var(3.AgentType)|   .1616175   .0568036                      .0811553    .3218547
+                            var(_cons)|   .1258294   .0338399                      .0742787    .2131572
 -------------------------------------------------------------------------------------------------------
 Note: Estimates are transformed only in the first equation to time ratios.
 Note: _cons estimates baseline time (conditional on zero random effects).
-LR test vs. lognormal model: chi2(3) = 147.61             Prob > chi2 = 0.0000
+LR test vs. loglogistic model: chi2(3) = 155.62           Prob > chi2 = 0.0000
 
 Note: LR test is conservative and provided only for reference.
 
@@ -563,7 +571,7 @@ Note: LR test is conservative and provided only for reference.
 Likelihood-ratio test
 Assumption: m1 nested within m2
 
- LR chi2(3) =  42.49
+ LR chi2(3) =  43.33
 Prob > chi2 = 0.0000
 
 .         
@@ -578,7 +586,7 @@ Margins: asbalanced
                                       |         df        chi2     P>chi2
 --------------------------------------+----------------------------------
 _t                                    |
-AgentType#c.Congruence1#c.Congruence1 |          2       38.96     0.0000
+AgentType#c.Congruence1#c.Congruence1 |          2       40.78     0.0000
 -------------------------------------------------------------------------
 
 . 
@@ -590,7 +598,7 @@ AgentType#c.Congruence1#c.Congruence1 |          2       38.96     0.0000
 ------------------------------------------------------------------------------
           _t | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |  -.0304907   .0510631    -0.60   0.550    -.1305725    .0695911
+         (1) |  -.0275956   .0523498    -0.53   0.598    -.1301994    .0750081
 ------------------------------------------------------------------------------
 
 . lincom c.Congruence1#c.Congruence1 + 2.AgentType#c.Congruence1#c.Congruence1 // DRL-AA Coefficient -0.3854438, z = -1.29, p = .198
@@ -600,7 +608,7 @@ AgentType#c.Congruence1#c.Congruence1 |          2       38.96     0.0000
 ------------------------------------------------------------------------------
           _t | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |  -.3854438   .2992745    -1.29   0.198     -.972011    .2011233
+         (1) |  -.4012015   .2925967    -1.37   0.170    -.9746804    .1722774
 ------------------------------------------------------------------------------
 
 . lincom c.Congruence1#c.Congruence1 + 3.AgentType#c.Congruence1#c.Congruence1 // DRL-HP-AA Coefficient = -1.387524, z = -6.49, p < .0001
@@ -610,7 +618,7 @@ AgentType#c.Congruence1#c.Congruence1 |          2       38.96     0.0000
 ------------------------------------------------------------------------------
           _t | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |  -1.387524   .2139523    -6.49   0.000    -1.806862   -.9681847
+         (1) |   -1.37904   .2077093    -6.64   0.000    -1.786143    -.971937
 ------------------------------------------------------------------------------
 
 . 
@@ -623,7 +631,7 @@ AgentType#c.Congruence1#c.Congruence1 |          2       38.96     0.0000
 ------------------------------------------------------------------------------
           _t | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |  -1.357033   .2199496    -6.17   0.000    -1.788126   -.9259396
+         (1) |  -1.351444   .2142643    -6.31   0.000    -1.771395   -.9314939
 ------------------------------------------------------------------------------
 
 . 
@@ -635,7 +643,7 @@ AgentType#c.Congruence1#c.Congruence1 |          2       38.96     0.0000
 ------------------------------------------------------------------------------
           _t | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |   -1.00208   .3674671    -2.73   0.006    -1.722302   -.2818574
+         (1) |  -.9778383    .358472    -2.73   0.006     -1.68043   -.2752462
 ------------------------------------------------------------------------------
 
 . 
@@ -646,8 +654,10 @@ AgentType#c.Congruence1#c.Congruence1 |          2       38.96     0.0000
 ------------------------------------------------------------------------------
           _t | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         (1) |  -.3549531     .30268    -1.17   0.241     -.948195    .2382887
+         (1) |  -.3736059   .2964197    -1.26   0.208    -.9545779     .207366
 ------------------------------------------------------------------------------
 
+. 
+. 
 . 
 end of do-file

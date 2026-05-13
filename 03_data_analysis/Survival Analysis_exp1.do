@@ -36,7 +36,7 @@ format aic bic %3.2f
 sort aic bic
 list
 
-// lognormal model is best fit (AIC = 7330.74; BIC = 7375.48)
+// loglogistic model is best fit
 
 frame change default
 frame drop frame1
@@ -44,7 +44,7 @@ frame drop frame1
 
 // Random-intercepts and Random-effect of Agent Type. Control for amount of decision-overlab (Congruence1 = z-scored Congruence), it's interaction, as well as TrialNum (serves as time)
 
-mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(lognormal) time tratio
+mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(loglogistic) time tratio
 
 contrast i.AgentType	// chi2(2) = 225.50, p < .0001
 pwcompare i.AgentType, effects tratio
@@ -78,14 +78,14 @@ gen ln_time = ln(_t)
 reg ln_time i.AgentType c.Congruence1##i.AgentType c.TrialNum
 estat vif
 
-// Original Model
-mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(lognormal) time tratio
+// Linear model (for quadratic LRT comparison)
+mestreg i.AgentType c.Congruence1 i.AgentType#c.Congruence1 c.TrialNum || PartID: i.AgentType, distribution(loglogistic) time tratio
 estimates store m1
 
 // Check if Quadratic Term improves model fit.
 mestreg i.AgentType c.Congruence1 c.Congruence1#c.Congruence1 ///
     i.AgentType#c.Congruence1 i.AgentType#c.Congruence1#c.Congruence1 c.TrialNum ///
-    || PartID: i.AgentType, distribution(lognormal) time tratio
+    || PartID: i.AgentType, distribution(loglogistic) time tratio
 estimates store m2
 
 lrtest m1 m2	// lr-test chi2(3) = 42.49, p < .0001

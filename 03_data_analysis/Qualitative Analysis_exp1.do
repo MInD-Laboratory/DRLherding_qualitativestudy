@@ -12,7 +12,12 @@ set more off
 import delimited "data/ratings_combined_exp1.csv", clear
 
 *--------------------------------------------*
-* Step 1: Create positive_attribution score
+* Step 1: PCA to confirm component structure
+*--------------------------------------------*
+pca q1 q2 q3 q4 q5
+
+*--------------------------------------------*
+* Step 2: Create positive_attribution score
 *--------------------------------------------*
 egen positive_attribution = rowmean(q1 q2 q3 q5)
 
@@ -72,16 +77,53 @@ graph export "ratings_boxplot_exp1.png", replace
 
 encode component, gen(component_num)
 
-// Mixed model for Positive Attribution (component_num == 1)
+*--------------------------------------------*
+* Descriptive statistics by agent and component
+*--------------------------------------------*
+bysort component agent_code: summarize score
+
+*--------------------------------------------*
+* ICC check (justification for MLM)
+*--------------------------------------------*
+mixed score if component_num == 1 || part_id:, reml
+estat icc
+
+mixed score if component_num == 2 || part_id:, reml
+estat icc
+
+*--------------------------------------------*
+* LRT chi-square for AA type effect (ML, not REML)
+*--------------------------------------------*
+// Positive Attribution
+mixed score i.block if component_num == 1 || part_id:, ml
+estimates store null_pa
+
+mixed score i.agent_code i.block if component_num == 1 || part_id:, ml
+estimates store full_pa
+
+lrtest null_pa full_pa  // chi2(2) for AA type effect on positive attribution
+
+// Strategy Effect
+mixed score i.block if component_num == 2 || part_id:, ml
+estimates store null_se
+
+mixed score i.agent_code i.block if component_num == 2 || part_id:, ml
+estimates store full_se
+
+lrtest null_se full_se  // chi2(2) for AA type effect on strategy effect
+
+*--------------------------------------------*
+* Final REML + Kenward-Roger models for reporting
+*--------------------------------------------*
+// Positive Attribution
 mixed score i.agent_code i.block if component_num == 1 || part_id:, reml dfmethod(kroger)
+contrast agent_code   // chi2(2) for AA type
 margins agent_code, pwcompare(effects) mcompare(bonferroni)
 
-// Mixed model for Strategy Effect (component_num == 2)
+// Strategy Effect
 mixed score i.agent_code i.block if component_num == 2 || part_id:, reml dfmethod(kroger)
+contrast agent_code   // chi2(2) for AA type
 margins agent_code, pwcompare(effects) mcompare(bonferroni)
-
-// Overall test of agent_code differences (only if needed)
-contrast agent_code
 
 // Standard chi-square test (reload raw file because q6 was dropped earlier)
 import delimited "data/ratings_combined_exp1.csv", clear
