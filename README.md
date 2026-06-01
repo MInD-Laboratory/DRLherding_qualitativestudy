@@ -1,6 +1,10 @@
 # DRL Herding Qualitative Study
 # Supplementary Repository for paper
-Add DOI and citation here
+**Training Deep Reinforcement Learning Agents to Coordinate with Humans using Perceptual-motor Primitives of Human Behavior**
+Gaurav Patil, Le Quynh Trang Pham, Patrick Nalepka, Rachel W. Kallen, Michael J. Richardson\
+International Journal of Human-Computer Studies, 2026, 103838, ISSN 1071-5819,\
+https://doi.org/10.1016/j.ijhcs.2026.103838 \
+https://www.sciencedirect.com/science/article/pii/S1071581926001138
 
 This repository contains supplementary materials for the DRL herding study:
 
